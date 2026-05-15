@@ -1,0 +1,180 @@
+/* =========================================
+   Mindanao Media Network CATV
+   Modern CATV / IPTV Interface Stylesheet
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #0b0f1a;
+    color: #ffffff;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #007bff, #00c853);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffe600;
+}
+
+/* HERO SECTION */
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.6),
+                rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    margin-bottom: 15px;
+    color: #00ffcc;
+}
+
+.hero-content p {
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.hero-content button {
+    background: #00c853;
+    border: none;
+    padding: 14px 35px;
+    font-size: 18px;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero-content button:hover {
+    background: #009624;
+    transform: scale(1.05);
+}
+
+/* CHANNEL SECTION */
+.channels {
+    padding: 60px 30px;
+}
+
+.section-title {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #00e5ff;
+}
+
+.channel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.channel-card {
+    background: #151c2c;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.4);
+}
+
+.channel-card:hover {
+    transform: translateY(-8px);
+}
+
+.channel-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.channel-info {
+    padding: 20px;
+}
+
+.channel-info h3 {
+    margin-bottom: 10px;
+    color: #00ffcc;
+}
+
+.channel-info p {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* LIVE BADGE */
+.live-badge {
+    display: inline-block;
+    background: red;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    background: #111827;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #999;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+}
