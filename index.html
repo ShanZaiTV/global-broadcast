@@ -1,118 +1,508 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mindanao Media Network CATV</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mindanao Media Network</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    overflow:hidden;
+}
+
+/* HEADER */
+
+header{
+    height:75px;
+    background:#111827;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+    border-bottom:3px solid #38bdf8;
+}
+
+.main-logo{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-right:15px;
+    background:white;
+}
+
+.title-box{
+    display:flex;
+    flex-direction:column;
+}
+
+.title{
+    font-size:28px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+.subtitle{
+    font-size:13px;
+    color:#cbd5e1;
+}
+
+/* MAIN LAYOUT */
+
+.container{
+    display:flex;
+    height:calc(100vh - 75px);
+}
+
+/* PLAYLIST */
+
+.playlist{
+    width:360px;
+    background:#111827;
+    overflow-y:auto;
+    border-right:2px solid #1e293b;
+}
+
+.playlist-header{
+    padding:15px;
+    text-align:center;
+    background:#1e293b;
+    font-size:22px;
+    font-weight:bold;
+    color:#facc15;
+}
+
+/* CHANNEL ITEM */
+
+.channel{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:15px;
+    border-bottom:1px solid #1e293b;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.channel:hover{
+    background:#2563eb;
+}
+
+/* CHANNEL NUMBER */
+
+.channel-number{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#38bdf8;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* CHANNEL LOGO */
+
+.channel-logo{
+    width:60px;
+    height:60px;
+    border-radius:10px;
+    object-fit:cover;
+    background:white;
+}
+
+/* CHANNEL INFO */
+
+.channel-info{
+    flex:1;
+}
+
+.channel-name{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.channel-label{
+    margin-top:5px;
+    font-size:13px;
+    color:#cbd5e1;
+}
+
+/* PLAYER */
+
+.player{
+    flex:1;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+video{
+    width:96%;
+    height:92%;
+    border-radius:12px;
+    background:black;
+}
+
+/* LIVE LABEL */
+
+.live{
+    position:absolute;
+    top:20px;
+    left:20px;
+    background:red;
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:bold;
+    z-index:10;
+}
+
+/* FOOTER */
+
+.footer{
+    position:absolute;
+    bottom:15px;
+    right:20px;
+    background:rgba(0,0,0,0.6);
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13px;
+    color:#fff;
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="logo">
-      <h1>Mindanao Media Network</h1>
-      <span>Your trusted CATV entertainment & news source</span>
-    </div>
+<!-- HEADER -->
 
-    <div id="live-clock"></div>
-  </header>
-                <!-- VIDEO PLAYER -->
-    <video id="video" controls autoplay></video>
-    
-    
-    <!-- CHANNEL LIST -->
-    <div class="channel-list">
+<header>
 
-        <button class="channel-btn"
-        onclick="playStream('https://cdn.vegasplus.us/vegas/mmn01/playlist.m3u8')">
-        MINDANOW
-        </button>    
+<img
+src="https://commons.wikimedia.org/wiki/File:Mindanao_Media_Network.jpg"
+class="main-logo"
+alt="Mindanao Media Network Logo">
 
-        <button class="channel-btn"
- onclick="playStream('https://startelevisionph.itunerworldwide.workers.dev/master.live.m3u8')">
-       STAR TELEVISION
-        </button>
-
-        <button class="channel-btn"
-        onclick="playStream('https://sineplusph.itunerworldwide.workers.dev/master.live.m3u8')">
-        SINE PLUS
-        </button>
-
-        <button class="channel-btn"
-        onclick="playStream('https://dreamtvph.itunerworldwide.workers.dev/master.live.m3u8')">
-        DREAM TV PH
-        </button>
-
-	<button class="channel-btn"
-        onclick="playStream('https://highlightstvph.itunerworldwide.workers.dev/master.live.m3u8')">
-        HIGHLIGHTS TV
-        </button>	 
-
-	<button class="channel-btn"
-        onclick="playStream('https://startvphilippines.itunerworldwide.workers.dev/master.live.m3u8')">
-        STAR TV PHILIPPINES
-        </button>
-
- 	<button class="channel-btn"
-        onclick="playStream('https://hypetvphbydtmmbs.itunerworldwide.workers.dev/master.live.m3u8')">
-        HYPE TV BY DTMMBS
-        </button>
-		
- 	<button class="channel-btn"
-        onclick="playStream('https://iptv.akamaized.net/hls/live/2040999/myx/master_2.m3u8')">
-        MYX
-        </button>
-
-		<button class="channel-btn"
-        onclick="playStream('https://a-cdn.klowdtv.com/live2/gsn_720p/chunks.m3u8')">
-        GSN
-        </button>
-
-    </div>
+<div class="title-box">
+<div class="title">Mindanao Media Network</div>
+<div class="subtitle">Your Trusted CATV Entertainment & News Source</div>
 </div>
 
-<footer>
-    © 2026 Mindanao Media Network CATV
-</footer>
+</header>
 
-<!-- HLS PLAYER -->
+<!-- MAIN -->
+
+<div class="container">
+
+<!-- PLAYLIST -->
+
+<div class="playlist">
+
+<div class="playlist-header">
+CATV Channels
+</div>
+
+<!-- CHANNEL 1 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://cdn.vegasplus.us/vegas/mmn01/playlist.m3u8',
+'Mindanow'
+)">
+
+<div class="channel-number">1</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">Mindanow</div>
+</div>
+
+</div>
+
+<!-- CHANNEL 2 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://3rstv.elektriko4444.workers.dev/peanut.m3u8',
+'3rsTV'
+)">
+
+<div class="channel-number">2</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">3rsTV</div>
+</div>
+
+</div>
+
+<!-- CHANNEL 3 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://3rssinepinoy2.elektriko4444.workers.dev/mochi.m3u8',
+'3rsSinePinoy'
+)">
+
+<div class="channel-number">3</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">3rsSinePinoy</div>
+</div>
+
+</div>
+
+<!-- CHANNEL 4 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://3rsmoviebox.elektriko4444.workers.dev/moon.m3u8',
+'3rsMovieBox'
+)">
+
+<div class="channel-number">4</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">3rsMovieBox</div>
+</div>
+
+</div>
+
+<!-- CHANNEL 5 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://3rscartoonmovies.elektriko4444.workers.dev/kolet.m3u8',
+'3rsCartoonMovies'
+)">
+
+<div class="channel-number">5</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">3rsCartoonMovies</div>
+</div>
+
+</div>
+
+<!-- CHANNEL 6 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://startelevisionph.itunerworldwide.workers.dev/master.live.m3u8',
+'StarTelevision'
+)">
+
+<div class="channel-number">6</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">StarTelevision</div>
+</div>
+
+</div>
+
+<!-- CHANNEL 7 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://sineplusph.itunerworldwide.workers.dev/master.live.m3u8',
+'SinePlus'
+)">
+
+<div class="channel-number">7</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">SinePlus</div>
+</div>
+
+</div>
+
+<!-- CHANNEL 8 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://dreamtvph.itunerworldwide.workers.dev/master.live.m3u8',
+'DreamTv'
+)">
+
+<div class="channel-number">8</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">DreamTv</div>
+</div>
+
+</div>
+
+<!-- CHANNEL 9 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://highlightstvph.itunerworldwide.workers.dev/master.live.m3u8',
+'HighlightsPh'
+)">
+
+<div class="channel-number">9</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">HighlightsPh</div>
+</div>
+
+</div>
+
+<!-- CHANNEL 10 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://startvphilippines.itunerworldwide.workers.dev/master.live.m3u8',
+'StarTvPh'
+)">
+
+<div class="channel-number">10</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">StarTvPh</div>
+</div>
+
+</div>
+
+<!-- CHANNEL 11 -->
+
+<div class="channel"
+onclick="playChannel(
+'https://hypetvphbydtmmbs.itunerworldwide.workers.dev/master.live.m3u8',
+'HypeTv'
+)">
+
+<div class="channel-number">11</div>
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+class="channel-logo">
+
+<div class="channel-info">
+<div class="channel-name">HypeTv</div>
+ </div>
+    </div>
+
+  </div>
+
+<!-- VIDEO PLAYER -->
+
+<div class="player">
+
+<div class="live" id="liveText">
+LIVE • Mindanao Media Network CATV
+</div>
+
+<video id="video" controls autoplay></video>
+
+<div class="footer">
+Mindanao Media Network CATV
+  </div>
+</div>
+
+<!-- HLS JS -->
+
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
 <script>
-const video = document.getElementById('video');
 
-function playStream(url){
+const video = document.getElementById('video');
+const liveText = document.getElementById('liveText');
+
+function playChannel(url, name){
+
+    liveText.innerHTML = "LIVE • " + name;
 
     if(Hls.isSupported()){
 
+        if(window.hls){
+            window.hls.destroy();
+        }
+
         const hls = new Hls();
+        window.hls = hls;
 
         hls.loadSource(url);
-
         hls.attachMedia(video);
 
-        hls.on(Hls.Events.MANIFEST_PARSED,function(){
+        hls.on(Hls.Events.MANIFEST_PARSED, function(){
             video.play();
         });
 
-    }
-
-    else if(video.canPlayType('application/vnd.apple.mpegurl')){
+    }else if(video.canPlayType('application/vnd.apple.mpegurl')){
 
         video.src = url;
 
-        video.addEventListener('loadedmetadata',function(){
+        video.addEventListener('loadedmetadata', function(){
             video.play();
         });
 
+    }else{
+        alert("HLS is not supported on this browser.");
     }
-
 }
 
-// AUTO PLAY FIRST CHANNEL
-playStream('https://cdn.vegasplus.us/vegas/mmn01/playlist.m3u8');
+/* AUTO PLAY FIRST CHANNEL */
+
+playChannel(
+'https://cdn.vegasplus.us/vegas/mmn01/playlist.m3u8',
+'Mindanow'
+);
+
 </script>
 
 </body>
