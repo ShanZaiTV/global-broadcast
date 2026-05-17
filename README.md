@@ -1,9 +1,10 @@
-# Mindanao Media Network CATV
+# Global Broadcast
 
-A simple CATV web platform for live TV streaming.
+A simple CATV web platform for live TV and Radio streaming.
 
 ## Features
 - Live TV channels
+- Live Radio
 - CATV playlist support
 - Responsive design
 - CATV dashboard
@@ -15,4 +16,4 @@ A simple CATV web platform for live TV streaming.
 - JavaScript
 
 ## Author
-Mindanao Media Network
+2026 Global Broadcast
