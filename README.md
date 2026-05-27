@@ -1,4 +1,4 @@
-# Global Broadcast
+# Minda StreamTV
 
 A simple CATV web platform for live TV and Radio streaming.
 
@@ -16,4 +16,4 @@ A simple CATV web platform for live TV and Radio streaming.
 - JavaScript
 
 ## Author
-2026 Global Broadcast
+2026 Minda StreamTV
